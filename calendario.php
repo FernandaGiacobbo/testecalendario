@@ -1,5 +1,6 @@
 <?php
 
+include 'header.php';
 include 'conecta_db.php';
 
 if (
@@ -34,57 +35,80 @@ if (
   <meta charset="UTF-8">
   <title>Calendário</title>
   <link rel="stylesheet" href="calendario.css">
+
 </head>
 <body>
-  <div class="calendar-container">
-    <div class="calendar-header">
-      <button id="prev">&#8592;</button>
-      <h2 id="month-year"></h2>
-      <button id="next">&#8594;</button>
-    </div>
-    <div class="calendar-days">
-      <div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div>
-      <div>QUI</div><div>SEX</div><div>SÁB</div>
-    </div>
-    <div class="calendar-dates" id="calendar-dates"></div>
-    <div class="botao-add">
-    <button id="openModal" class="add-event-btn">Adicionar Evento</button>
-  </div>
-  </div>
-
-  <!-- Botão para abrir o modal -->
 
 
-<!-- Modal -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Adicionar Evento</h2>
+<section class="home">
+  <section class="calendario">
+    <div class="calendar-container">
+      <div class="calendar-header">
+          <button id="prev">&#8592;</button>
+          <h2 id="month-year"></h2>
+          <button id="next">&#8594;</button>
+        </div>
+        <div class="calendar-days">
+          <div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div>
+          <div>QUI</div><div>SEX</div><div>SÁB</div>
+        </div>
+        <div class="calendar-dates" id="calendar-dates"></div>
+        <div class="botao-add">
+        <button id="openModal" class="add-event-btn">Adicionar Evento</button>
+      </div>
+      </div>
 
-    <div class="modal-form">
-      <form class="modal-form" method="POST">
+      <!-- Botão para abrir o modal -->
 
-        <label>Título</label>
-        <input name="titulo_evento" type="text" placeholder="Título do evento">
 
-        <label>Data de início</label>
-        <input name="data_evento" type="date">
-        <input name="horario_evento" type="time">
+      <!-- Modal -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Adicionar Evento</h2>
 
-        <label>Data de término</label>
-        <input name="data_prazo" type="date">
-        <input name="hora_prazo" type="time">
+          <div class="modal-form">
+            <form class="modal-form" method="POST">
 
-        <label>Descrição</label>
-        <textarea name="descricao" placeholder="Escreva uma descrição..."></textarea>
+              <label>Título</label>
+              <input name="titulo_evento" type="text" placeholder="Título do evento">
 
-        <button type="submit" class="save-event">Salvar</button>
+              <label>Data de início</label>
+              <input name="data_evento" type="date">
+              <input name="horario_evento" type="time">
 
-      </form>
-    </div>
-  </div>
-</div>
+              <label>Data de término</label>
+              <input name="data_prazo" type="date">
+              <input name="hora_prazo" type="time">
 
-  <script src="calendario.js"></script>
+              <label>Descrição</label>
+              <textarea name="descricao" placeholder="Escreva uma descrição..."></textarea>
+
+              <button type="submit" class="save-event">Salvar</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <script src="calendario.js"></script>
+    </section>
+
+
+    <section class="eventos-adicionados">
+       
+      <p>Eventos do dia</p>
+
+      <br>
+      
+      <div id="eventosDoDia"></div>
+
+
+    </section>
+  
+
+  </section>
+
+  </section>
 </body>
 </html>

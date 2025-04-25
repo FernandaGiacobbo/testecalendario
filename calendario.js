@@ -61,3 +61,56 @@ window.onclick = (e) => {
     modal.style.display = "none";
   }
 };
+
+const hoje = new Date();
+
+function renderizarCalendario() {
+  // ... (seu código de renderização)
+
+  for (let dia = 1; dia <= totalDiasDoMes; dia++) {
+    const dataAtual = new Date(ano, mes, dia);
+
+    const divDia = document.createElement("div");
+    divDia.textContent = dia;
+
+    if (
+      dataAtual.getDate() === hoje.getDate() &&
+      dataAtual.getMonth() === hoje.getMonth() &&
+      dataAtual.getFullYear() === hoje.getFullYear()
+    ) {
+      divDia.classList.add("hoje");
+    }
+
+    container.appendChild(divDia);
+  }
+}
+
+datesContainer.addEventListener("click", async (e) => {
+  if (e.target.tagName === "DIV" && e.target.textContent) {
+    const dia = e.target.textContent.padStart(2, '0');
+    const mes = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const ano = currentDate.getFullYear();
+    const dataFormatada = `${ano}-${mes}-${dia}`;
+
+    const res = await fetch(`buscar_eventos.php?data=${dataFormatada}`);
+    const eventos = await res.json();
+
+    const containerEventos = document.getElementById("eventosDoDia");
+    containerEventos.innerHTML = "";
+
+    if (eventos.length === 0) {
+      containerEventos.innerHTML = "<p>Nenhum evento encontrado para essa data.</p>";
+    } else {
+      eventos.forEach(ev => {
+        containerEventos.innerHTML += `
+          <div class="event-card">
+            <h3>${ev.titulo_evento}</h3>
+            <p><strong>Início:</strong> ${ev.data_evento} ${ev.horario_evento}</p>
+            <p><strong>Término:</strong> ${ev.data_prazo} ${ev.hora_prazo}</p>
+            <p><strong>Descrição:</strong>${ev.descricao}</p>
+          </div>
+        `;
+      });
+    }
+  }
+});

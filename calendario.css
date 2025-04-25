@@ -1,17 +1,17 @@
 body {
   font-family: Arial, sans-serif;
   background: #f9f9f9;
-  display: flex;
   justify-content: center;
   margin-top: 40px;
 }
+
 
 .calendar-container {
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   padding: 20px;
-  width: 1094px;
+  width: 1000px;
   height: 640px;
 }
 
@@ -34,9 +34,11 @@ body {
 
 .calendar-dates div {
   padding: 35px;
+  border: 1px solid #ddd;
   border-radius: 5px;
   margin: 2px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 .calendar-dates div:hover {
@@ -112,4 +114,59 @@ body {
 
 .botao-add{
   align-items: right;
+}
+
+.eventos-adicionados{
+  height: 540px;
+  width: 550px; /* ou mais, se quiser */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow-y: auto;
+  text-align: center;
+
+}
+
+.home {
+  height: 100vh;
+  position: relative;
+  left: 250px;
+  width: calc(100% - 250px);
+  transition: var(--tran-05);
+  display: flex;
+  gap: 20px;
+}
+
+.event-details {
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  display: none;
+}
+
+.event-details.active {
+  display: block;
+}
+
+.event-details h2 {
+  margin-bottom: 0.5rem;
+}
+
+.event-details p {
+  margin: 0.5rem 0;
+}
+
+.event-card {
+  background: #f1f1f1;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+p{
+  font-size: small;
 }
